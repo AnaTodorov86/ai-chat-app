@@ -2,9 +2,7 @@ import { createOpenAI } from "@ai-sdk/openai";
 import { convertToModelMessages, streamText, UIMessage } from "ai";
 
 const gateway = createOpenAI({
-  // Ovde ostavljamo koren, ali pazi: 
-  // SDK dodaje /v1/chat/completions na ovo
-  baseURL: "http://localhost:8000/v1",
+  baseURL: process.env.MOCK_GATEWAY_URL ? `${process.env.MOCK_GATEWAY_URL}/v1` : "http://localhost:8000/v1",
   apiKey: "mock-key",
 });
 
